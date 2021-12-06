@@ -3,6 +3,7 @@
 # This installs the bitbucket module. See README.md for details
 #
 class bitbucket::install(
+  $webappdir,
   $version        = $bitbucket::version,
   $product        = $bitbucket::product,
   $format         = $bitbucket::format,
@@ -18,7 +19,6 @@ class bitbucket::install(
   $deploy_module  = $bitbucket::deploy_module,
   $dburl          = $bitbucket::dburl,
   $checksum       = $bitbucket::checksum,
-  $webappdir      = undef,
   ) {
 
   if $manage_usr_grp {
