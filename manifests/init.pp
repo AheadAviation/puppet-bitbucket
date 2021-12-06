@@ -23,7 +23,7 @@ class bitbucket(
   $homedir        = '/home/bitbucket',
   $context_path   = '',
   $tomcat_port    = 7990,
-  $tomcat_ssl     = false, 
+  $tomcat_ssl     = false,
   $logdir         = "${homedir}/log",
   $log_maxhistory = '31', # days
   $log_maxsize    = '25MB',
@@ -72,11 +72,11 @@ class bitbucket(
   $backup_home            = '/opt/bitbucket-backup',
   $backupuser             = 'admin',
   $backuppass             = 'password',
-  $backup_schedule_day    = '1-5',  
+  $backup_schedule_day    = '1-5',
   $backup_schedule_hour   = '5',
   $backup_schedule_minute = '0',
   $backup_keep_age        = '4w',
-  $backup_base_url        = "${bitbucket::base_url}",
+  $backup_base_url        = $bitbucket::base_url,
   $backup_keystore        = "${bitbucket::homedir}/shared/config/ssl-keystore",
 
   # Manage service
@@ -120,11 +120,11 @@ class bitbucket(
   }
 
   anchor { 'bitbucket::start':
-  } ->
-  class { '::bitbucket::install': webappdir => $webappdir, } ->
-  class { '::bitbucket::config': } ~>
-  class { '::bitbucket::service': } ->
-  class { '::bitbucket::backup': } ->
-  anchor { 'bitbucket::end': }
+  }
+  -> class { '::bitbucket::install': webappdir => $webappdir, }
+  -> class { '::bitbucket::config': }
+  ~> class { '::bitbucket::service': }
+  -> class { '::bitbucket::backup': }
+  -> anchor { 'bitbucket::end': }
 
 }

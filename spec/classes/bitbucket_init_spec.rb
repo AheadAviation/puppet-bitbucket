@@ -7,6 +7,7 @@ describe 'bitbucket' do
         let(:facts) do
           facts
         end
+
         context 'test class without any parameters' do
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('bitbucket') }
@@ -27,13 +28,13 @@ describe 'bitbucket' do
     describe 'test class without any parameters on Solaris/Nexenta' do
       let(:facts) do
         {
-          :osfamily => 'Solaris',
-          :operatingsystem => 'Nexenta',
-          :operatingsystemmajrelease => '7',
+          osfamily: 'Solaris',
+          operatingsystem: 'Nexenta',
+          operatingsystemmajrelease: '7',
         }
       end
 
-      it { expect { is_expected.to contain_service('bitbucket') }.to raise_error(Puppet::Error, /Nexenta 7 not supported/) }
+      it { expect { is_expected.to contain_service('bitbucket') }.to raise_error(Puppet::Error, %r{Nexenta 7 not supported}) }
     end
   end
 end

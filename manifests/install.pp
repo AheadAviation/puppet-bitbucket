@@ -18,7 +18,7 @@ class bitbucket::install(
   $deploy_module  = $bitbucket::deploy_module,
   $dburl          = $bitbucket::dburl,
   $checksum       = $bitbucket::checksum,
-  $webappdir,
+  $webappdir      = undef,
   ) {
 
   if $manage_usr_grp {
@@ -72,8 +72,8 @@ class bitbucket::install(
       staging::file { $file:
         source  => "${download_url}/${file}",
         timeout => 1800,
-      } ->
-      staging::extract { $file:
+      }
+      -> staging::extract { $file:
         target  => $webappdir,
         creates => $archive_dir,
         strip   => 1,

@@ -37,9 +37,9 @@ class bitbucket::gc(
     ensure  => $ensure,
     content => template('bitbucket/git-gc.sh.erb'),
     mode    => '0755',
-  } ->
+  }
 
-  cron { 'git-gc-bitbucket':
+  -> cron { 'git-gc-bitbucket':
     ensure  => $ensure,
     command => "${path} &>/dev/null",
     user    => $user,

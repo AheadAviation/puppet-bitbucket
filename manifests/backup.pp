@@ -3,6 +3,8 @@
 #
 # This installs the bitbucket backup client
 #
+
+# lint:ignore:140chars
 class bitbucket::backup(
   $manage_backup        = $bitbucket::manage_backup,
   $ensure               = $bitbucket::backup_ensure,
@@ -58,8 +60,8 @@ class bitbucket::backup(
         staging::file { $file:
           source  => "${download_url}/${version}/${file}",
           timeout => 1800,
-        } ->
-        staging::extract { $file:
+        }
+        -> staging::extract { $file:
           target  => $appdir,
           creates => "${appdir}/lib",
           strip   => 1,
@@ -123,3 +125,5 @@ class bitbucket::backup(
   }
 
 }
+
+# lint:endignore

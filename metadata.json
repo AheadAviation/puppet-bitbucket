@@ -7,7 +7,28 @@
   "source": "https://github.com/danofthewired/puppet-bitbucket.git",
   "project_page": "https://github.com/danofthewired/puppet-bitbucket",
   "issues_url": "https://github.com/danofthewired/puppet-bitbucket/issues",
-  "description": "Module to install Atlassian Bitbucket Server/Data Center. On-premises source code management for Git that's secure, fast, and enterprise grade.",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.0.0 < 6.0.0"
+    },
+    {
+      "name": "mkrakowitzer/deploy",
+      "version_requirement": ">= 0.0.3 < 1.0.0"
+    },
+    {
+      "name": "puppet/staging",
+      "version_requirement": ">= 1.0.0 < 7.0.0"
+    },
+    {
+      "name": "puppet/archive",
+      "version_requirement": ">= 0.4.4 < 7.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -38,36 +59,18 @@
       "operatingsystemrelease": [
         "7",
         "8",
-        "9"  
+        "9"
       ]
-    }
-  ],
-  "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.0.0"
-    },
-    {
-      "name": "puppetlabs/inifile",
-      "version_requirement": ">= 1.0.0"
-    },
-    {
-      "name": "mkrakowitzer/deploy",
-      "version_requirement": ">= 0.0.3"
-    },
-    {
-      "name": "puppet/staging",
-      "version_requirement": ">= 1.0.0"
-    },
-    {
-      "name": "puppet/archive",
-      "version_requirement": ">= 0.4.4"
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=5.5.10 < 7.0.0"
+      "version_requirement": ">=5.5.10 < 8.0.0"
     }
-  ]
+  ],
+  "description": "Module to install Atlassian Bitbucket Server/Data Center. On-premises source code management for Git that's secure, fast, and enterprise grade.",
+  "pdk-version": "2.3.0",
+  "template-url": "pdk-default#2.3.0",
+  "template-ref": "tags/2.3.0-0-g8aaceff"
 }

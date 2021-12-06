@@ -2,6 +2,8 @@
 #
 # This manages the bitbucket service. See README.md for details
 #
+
+# lint:ignore:140chars
 class bitbucket::service  (
 
   $service_manage        = $bitbucket::service_manage,
@@ -43,3 +45,5 @@ class bitbucket::service  (
   }
 
 }
+
+# lint:endignore

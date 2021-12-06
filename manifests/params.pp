@@ -28,7 +28,7 @@ class bitbucket::params {
     }
   }
 
-  case $service_provider {
+  case $::service_provider {
     'systemd': {
       $service_file_location = "${systemd_unit_dir}/bitbucket.service"
       $service_file_template = 'bitbucket/bitbucket.service.erb'
@@ -42,3 +42,4 @@ class bitbucket::params {
   }
 
 }
+
